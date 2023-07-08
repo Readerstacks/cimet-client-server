@@ -1,3 +1,11 @@
+import { PlanPlaceHolderLoader } from "./components/Placeholders/PlaceholderLoader";
+
 export default function Loading() {
-  return  <span>Loading....</span>
+  return (
+    <>
+      <PlanPlaceHolderLoader />
+      <PlanPlaceHolderLoader />
+      <PlanPlaceHolderLoader />
+    </>
+  );
 }
