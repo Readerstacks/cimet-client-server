@@ -1,8 +1,8 @@
-import { ApiService } from "../services/ApiService";
+import { ProductService } from "@/services/ProductService";
 import Plan from "./components/plan";
 
 export default async function Home() {
-  const data = await ApiService.getProducts();
+  const data = await ProductService.getList();
 
   function hasPlans(plans) {
     return (
