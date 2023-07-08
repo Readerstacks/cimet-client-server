@@ -18,13 +18,7 @@ export default async function Home() {
       <h1>Electiricity Plans</h1>
 
       {hasPlans(data) &&
-        data.data.electricity.map((plan) => {
-          return (
-            <>
-              <Plan item={plan} />
-            </>
-          );
-        })}
+        data.data.electricity.map((plan) => <Plan key={plan.id} item={plan} />)}
       {!hasPlans(data) && <div>No Data found...</div>}
     </>
   );

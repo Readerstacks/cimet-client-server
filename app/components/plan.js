@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function Plan({ item }) {
-  // You can add any UI inside Loading, including a Skeleton.
   return (
     <div className="plan" key={item.id}>
       <Image
