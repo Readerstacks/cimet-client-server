@@ -1,21 +1,42 @@
 import Image from "next/image";
+import { Benefits } from "./Benefits";
 import { ReadMore } from "./ReadMore";
+import { Tags } from "./Tags";
 
 export default function Plan({ item }) {
+  const benefitList = [
+    {
+      id: 1,
+      name: item.view_benefit,
+    },
+    {
+      id: 2,
+      name: item.view_contract,
+    },
+    {
+      id: 3,
+      name: item.view_exit_fee,
+    },
+  ];
+
   // Plan UI
   return (
     <div className="plan" key={item.id}>
       <div className="tags">
-        <PlanTags tags={item.plan_tags} />
+        <Tags tags={item.plan_tags} />
       </div>
       <div className="display-flex space-arround align-center ">
         <div className="provider-info align-center display-flex dir-col lh2 mb10">
-          <Image
-            width={80}
-            alt="Provider image"
-            height={60}
-            src={item.provider_image}
-          />
+          <div className="provider-image">
+            <Image
+              alt={item.provider_name}
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "100%", height: "auto" }}
+              src={item.provider_image}
+            />
+          </div>
           <div className="name">View Details</div>
           <div className="name">
             <a href={item.plan_document} target="_blank">
@@ -23,12 +44,12 @@ export default function Plan({ item }) {
             </a>
           </div>
         </div>
-        <div className="mb10">
+        <div className="mb10 width-220">
           <div className="less-then">
             <div>{item.dmo_percentage.Ausgrid} </div>
             <div>{item.plan_name_below_data}</div>
           </div>
-          <Benefits item={item} />
+          <Benefits items={benefitList} />
           <SolarTerif solar={item.solar_rates} />
         </div>
         <div className="mb10">
@@ -38,16 +59,30 @@ export default function Plan({ item }) {
           />
         </div>
       </div>
-
       <div
         className="features"
         dangerouslySetInnerHTML={{ __html: item.features }}
       ></div>
       <div className="plan-footer">
         <div className="terms_condition">
-          <ReadMore children={item.terms_condition} />
+          <Benefits
+            items={[
+              {
+                id: 1,
+                name: item.cooling_off_period + " Cooling off",
+              },
+              {
+                id: 2,
+                name: "Secure signup in 5 mins",
+              },
+              {
+                id: 3,
+                name: "Save Time and Efforts",
+              },
+            ]}
+          />
+          <ReadMore text={item.terms_condition} />
         </div>
-
         <div className="actions">
           <button className="btn btn-buy" type="button">
             Connect Online Today
@@ -56,34 +91,6 @@ export default function Plan({ item }) {
       </div>
     </div>
   );
-}
-
-function Benefits({ item }) {
-  // ['contract_length','view_contract','view_exit_fee']
-  return (
-    <>
-      <ul>
-        <li dangerouslySetInnerHTML={{ __html: item.view_benefit }}></li>
-        <li dangerouslySetInnerHTML={{ __html: item.view_exit_fee }}></li>
-        <li dangerouslySetInnerHTML={{ __html: item.view_contract }}></li>
-        <li dangerouslySetInnerHTML={{ __html: item.contract_length }}></li>
-      </ul>
-    </>
-  );
-}
-
-function PlanTags({ tags }) {
-  if (tags.length > 0) {
-    return (
-      <>
-        {tags.map((tag) => (
-          <div className="tag">{tag.tags?.name}</div>
-        ))}
-      </>
-    );
-  } else {
-    return <></>;
-  }
 }
 
 function SolarTerif({ solar }) {

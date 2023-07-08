@@ -6,9 +6,17 @@
 .plan .name {
   color: rgb(3, 215, 215);
 }
+.provider-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 .plan a {
   color: rgb(3, 215, 215);
   text-decoration: none;
+}
+.width-220 {
+  width: 220px;
 }
 .tags {
   position: relative;
@@ -43,7 +51,6 @@
 .standard-terif {
   background-color: rgb(194, 244, 244);
   padding: 2px;
-  width: 200px;
 }
 .features {
   padding: 10px;
@@ -56,7 +63,7 @@
 }
 .plan-footer {
   border-top: 1px solid;
-  padding: 5px;
+  padding: 10px;
   background-color: #cecece;
   color: black;
   display: flex;
@@ -107,4 +114,7 @@ ul {
 }
 .read-or-hide {
   color: brown;
+}
+.list-box {
+  margin: 10px 0;
 }
