@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <>
-      <h1>Electiricity Plans</h1>
+      <h1>Electricity Plans</h1>
 
       {hasPlans(data) &&
         data.data.electricity.map((plan) => <Plan key={plan.id} item={plan} />)}
