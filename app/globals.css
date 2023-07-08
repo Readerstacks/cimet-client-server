@@ -1,6 +1,67 @@
 .plan{
-  padding: 10px;
   border: 1px solid #787878;
   border-radius: 5px;
   margin: 10px;
+}
+.display-flex{
+  display: flex;
+  padding: 10px;
+  
+}
+.features{
+  padding: 10px;
+}
+.align-center{
+align-items: center;
+}
+.space-arround{
+  justify-content: space-around;
+}
+.plan-footer{
+  border-top: 1px solid;
+  padding: 5px;
+  background-color: #cecece;
+  color: black;
+  display: flex;
+}
+.terms_condition{
+  flex:7
+}
+.actions{
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 2;
+}
+.btn{
+ background-color: rgb(63, 63, 147);
+ padding: 10px;
+ color: white;
+ border: 0;
+ border-radius: 5px;
+ cursor: pointer;
+}
+.price-box{
+  border: 1px solid #787878;
+  border-radius: 5px;
+  width: 180px;
+}
+.price-bx-header{
+  background: rgb(63, 63, 147);
+  color: white;
+  padding: 10px;
+}
+.price-bx-body{
+  padding: 10px;
+  background: rgb(140, 202, 221);;
+}
+.year-price{
+  font-weight: bold;
+  color: #00559f;
+  font-size: 18px;
+}
+.month-price{
+  font-size: 12px;
+  color: #b9960a;
 }

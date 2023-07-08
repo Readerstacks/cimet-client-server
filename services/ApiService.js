@@ -9,10 +9,10 @@ export class ApiService {
     return config.API_URL + config.DS + config.VERSION + config.DS + url;
   }
 
-  static async getToken() {
+  static async getToken(tags = [], retryCount = 0) {
     const res = await fetch(ApiService.buildURL(ApiService.TOKEN_API), {
       method: "POST",
-      next: { revalidate: config.TOKEN_REVALIDATE_TIME },
+      next: { revalidate: config.TOKEN_REVALIDATE_TIME, tags },
       headers: {
         "Api-key": config.API_KEY,
       },
@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   static async getProducts() {
-    let token = await ApiService.getToken();
+    let token = await ApiService.getToken(["token"]);
 
     if (token) {
       const res = await fetch(ApiService.buildURL(ApiService.PLAN_LIST), {
