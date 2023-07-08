@@ -1,20 +1,16 @@
-'use client' // Error components must be Client Components
- 
-import { useEffect } from 'react'
- 
-export default function Error({
-  error,
-  reset,
-}) {
-  
+"use client"; // Error components must be Client Components
+
+import { useEffect } from "react";
+
+export default function Error({ error, reset }) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.log(error)
-  }, [error])
- 
+    console.log(error);
+  }, [error]);
+
   return (
     <div>
-      <h2>{error.message}</h2>
+      <h2>Error : {error.message} </h2>
       <button
         onClick={
           // Attempt to recover by trying to re-render the segment
@@ -24,5 +20,5 @@ export default function Error({
         Try again
       </button>
     </div>
-  )
+  );
 }
