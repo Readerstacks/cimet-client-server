@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Benefits } from "./Benefits";
 import { ReadMore } from "./ReadMore";
 import { Tags } from "./Tags";
+import { PriceComponent } from "./PriceComponent";
 
 export default function Plan({ item }) {
   const benefitList = [
@@ -25,15 +26,15 @@ export default function Plan({ item }) {
       <div className="tags">
         <Tags tags={item.plan_tags} />
       </div>
-      <div className="display-flex space-arround align-center ">
-        <div className="provider-info align-center display-flex dir-col lh2 mb10">
-          <div className="provider-image">
+      <div className="display-flex wrap space-arround ">
+        <div className="provider-info align-center display-flex dir-col lh2 mb10 col">
+          <div>
             <Image
               alt={item.provider_name}
               width={0}
               height={0}
               sizes="100vw"
-              style={{ width: "100%", height: "auto" }}
+              className="provider-image"
               src={item.provider_image}
             />
           </div>
@@ -44,7 +45,7 @@ export default function Plan({ item }) {
             </a>
           </div>
         </div>
-        <div className="mb10 width-220">
+        <div className="mb10 width-220 col">
           <div className="less-then">
             <div>{item.dmo_percentage.Ausgrid} </div>
             <div>{item.plan_name_below_data}</div>
@@ -52,7 +53,7 @@ export default function Plan({ item }) {
           <Benefits items={benefitList} />
           <SolarTerif solar={item.solar_rates} />
         </div>
-        <div className="mb10">
+        <div className="mb10 col width-220">
           <PriceComponent
             yearlyPrice={item.expected_annually_bill_amount}
             monthlyPrice={item.expected_monthly_bill_amount}
@@ -60,7 +61,7 @@ export default function Plan({ item }) {
         </div>
       </div>
       <div
-        className="features"
+        className="features "
         dangerouslySetInnerHTML={{ __html: item.features }}
       ></div>
       <div className="plan-footer">
@@ -104,20 +105,4 @@ function SolarTerif({ solar }) {
   } else {
     return <></>;
   }
-}
-
-function PriceComponent({ yearlyPrice, monthlyPrice }) {
-  return (
-    <div className="price-box">
-      <div className="price-bx-header">Estimated Cost</div>
-      <div className="price-bx-body">
-        <div className="year-price">
-          ${yearlyPrice} <span>/yr</span>
-        </div>
-        <div className="month-price">
-          ${monthlyPrice} <span>/mo</span>
-        </div>
-      </div>
-    </div>
-  );
 }

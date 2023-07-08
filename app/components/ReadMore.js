@@ -4,6 +4,7 @@ const { useState } = require("react");
 
 export const ReadMore = ({ text }) => {
   const [isReadMore, setIsReadMore] = useState(true);
+  
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
