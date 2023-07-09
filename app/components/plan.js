@@ -27,7 +27,7 @@ export default function Plan({ item }) {
         <Tags tags={item.plan_tags} />
       </div>
       <div className="display-flex wrap space-arround ">
-        <div className="provider-info align-center display-flex dir-col lh2 mb10 col">
+        <div className="provider-info align-center display-flex dir-col lh2 width-220 mb10 col">
           <div>
             <Image
               alt={item.provider_name}
@@ -64,7 +64,7 @@ export default function Plan({ item }) {
         className="features "
         dangerouslySetInnerHTML={{ __html: item.features }}
       ></div>
-      <div className="plan-footer">
+      <div className="plan-footer wrap">
         <div className="terms_condition">
           <Benefits
             items={[

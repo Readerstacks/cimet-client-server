@@ -17,7 +17,7 @@
   text-decoration: none;
 }
 .width-220 {
-  min-width: 220px;
+  min-width: 250px;
 }
 .tags {
   position: relative;
@@ -84,6 +84,7 @@
   justify-content: flex-end;
   align-items: center;
   flex: 2;
+  width: 200px;
 }
 .btn {
   background-color: rgb(63, 63, 147);
