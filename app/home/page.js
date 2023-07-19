@@ -1,6 +1,8 @@
 import { ProductService } from "@/services/ProductService";
-import Plan from "./components/plan";
+import Plan from "../components/plan";
 
+ 
+ 
 export default async function Home() {
   const data = await ProductService.getList();
 

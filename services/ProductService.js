@@ -7,7 +7,7 @@ export class ProductService{
 
     static async getList() {
         let token = await AuthService.getToken();  
-     
+      
         const res = await ApiService.fetch(ApiService.PLAN_LIST, {
           method: "POST",
           headers:{ "Auth-token": token},
