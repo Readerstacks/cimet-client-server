@@ -2,6 +2,7 @@ const { config } = require("./config");
 
 export class ApiService {
    static TOKEN_API = "generate-token";
+   static TOKEN_API = "generate-token";
    static PLAN_LIST = "plan-list";
 
    static buildURL(url) {
@@ -18,7 +19,6 @@ export class ApiService {
        }
       payload.next= {revalidate: config.API_CACHING_TIME,...payload.next };
       let res= await fetch(ApiService.buildURL(url),payload);
-      
       return res;
    }
 
