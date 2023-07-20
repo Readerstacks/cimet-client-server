@@ -10,6 +10,7 @@ export default function Products() {
 
   async function getList() {
     try {
+      setLoader(true);
       const products = await ProductService.getList();
       setLoader(false);
       setData(products);
