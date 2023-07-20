@@ -23,7 +23,7 @@ export async function GET(request) {
         }
 }
 
-//Get Token from Remote Server And Update to cookies
+//Get Token from Remote Server And Update to Cookies
 async function authorizeToken(){
     const res = await fetch(ApiService.buildURL(ApiService.TOKEN_API), {
         method: "POST",

@@ -1,5 +1,7 @@
 "use client";
 
+import { SanitizeHTML } from "./SanitizeHTML";
+
 const { useState } = require("react");
 
 export const ReadMore = ({ text }) => {
@@ -17,11 +19,7 @@ export const ReadMore = ({ text }) => {
   }
   return (
     <p className="text">
-      <span
-        dangerouslySetInnerHTML={{
-          __html: isReadMore ? removeTags(text).slice(0, 150) : text,
-        }}
-      ></span>
+      <SanitizeHTML html={isReadMore ? removeTags(text).slice(0, 150) : text} />
       {removeTags(text).length > 150 && (
         <span onClick={toggleReadMore} className="read-or-hide">
           {isReadMore ? "...Read more" : " Show less"}

@@ -3,6 +3,7 @@ import { Benefits } from "./Benefits";
 import { ReadMore } from "./ReadMore";
 import { Tags } from "./Tags";
 import { PriceComponent } from "./PriceComponent";
+import { SanitizeHTML } from "./SanitizeHTML";
 
 export default function Plan({ item }) {
   const benefitList = [
@@ -62,8 +63,10 @@ export default function Plan({ item }) {
       </div>
       <div
         className="features "
-        dangerouslySetInnerHTML={{ __html: item.features }}
-      ></div>
+        // dangerouslySetInnerHTML={{ __html: item.features }}
+      >
+        <SanitizeHTML html={item.features}/>
+      </div>
       <div className="plan-footer wrap">
         <div className="terms_condition">
           <Benefits
