@@ -8,17 +8,19 @@ export default function Products() {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(true);
 
+  async function getList() {
+    try {
+      const products = await ProductService.getList();
+      setLoader(false);
+      setData(products);
+    } catch (err) {
+      setLoader(false);
+      setData([]);
+    }
+  }
+
   useEffect(function () {
-    (async function () {
-      try {
-        const products = await ProductService.getList();
-        setLoader(false);
-        setData(products);
-      } catch (err) {
-        setLoader(false);
-        setData([]);
-      }
-    })();
+    getList();
   }, []);
 
   function hasPlans(plans) {
@@ -44,7 +46,11 @@ export default function Products() {
     <>
       {hasPlans(data) &&
         data.data.electricity.map((plan) => <Plan key={plan.id} item={plan} />)}
-      {!hasPlans(data) && <div>No Data found...</div>}
+      {!hasPlans(data) && (
+        <div>
+          No Data found... <button onClick={() => getList()}>Try Again</button>
+        </div>
+      )}
     </>
   );
 }
