@@ -1,53 +1,50 @@
-'use client'
+"use client";
 import { ProductService } from "@/services/ProductService";
 import Plan from "./plan";
-import { useEffect, useState }  from "react";
+import { useEffect, useState } from "react";
 import { PlanPlaceHolderLoader } from "./Placeholders/PlaceholderLoader";
 
-export default   function Products() {
-    const  [data,setData] = useState([]);
-    const  [loader,setLoader] = useState(true);
+export default function Products() {
+  const [data, setData] = useState([]);
+  const [loader, setLoader] = useState(true);
 
-    useEffect(function(){
-
-     (async function(){
-      try{
-        const products  = await ProductService.getList();
+  useEffect(function () {
+    (async function () {
+      try {
+        const products = await ProductService.getList();
         setLoader(false);
-        setData(products)
-      }
-      catch(err){
+        setData(products);
+      } catch (err) {
         setLoader(false);
-        setData([])
+        setData([]);
       }
-     })()
+    })();
+  }, []);
 
-    },[])
+  function hasPlans(plans) {
+    return (
+      plans &&
+      plans.data &&
+      plans.data.electricity &&
+      plans.data.electricity.length
+    );
+  }
 
-    function hasPlans(plans) {
-        return (
-          plans &&
-          plans.data &&
-          plans.data.electricity &&
-          plans.data.electricity.length
-        );
-    }
-
-    if(loader){
-      return <>
+  if (loader) {
+    return (
+      <>
         <PlanPlaceHolderLoader />
         <PlanPlaceHolderLoader />
         <PlanPlaceHolderLoader />
       </>
-    }
-    
-      return (
-        <>
-          {hasPlans(data) &&
-            data.data.electricity.map((plan) => <Plan key={plan.id} item={plan} />)}
-          {!hasPlans(data) && <div>No Data found...</div>}
-        </>
-      );
-    
+    );
+  }
 
+  return (
+    <>
+      {hasPlans(data) &&
+        data.data.electricity.map((plan) => <Plan key={plan.id} item={plan} />)}
+      {!hasPlans(data) && <div>No Data found...</div>}
+    </>
+  );
 }
