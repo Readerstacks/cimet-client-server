@@ -1,4 +1,4 @@
-export function PriceComponent({ yearlyPrice, monthlyPrice }) {
+export function PriceComponent({ yearlyPrice, monthlyPrice, billingOptions }) {
   return (
     <div className="price-box">
       <div className="price-bx-header">Estimated Cost</div>
@@ -9,6 +9,7 @@ export function PriceComponent({ yearlyPrice, monthlyPrice }) {
         <div className="month-price">
           ${monthlyPrice} <span>/mo</span>
         </div>
+        {billingOptions}
       </div>
     </div>
   );

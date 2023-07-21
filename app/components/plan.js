@@ -58,6 +58,8 @@ export default function Plan({ item }) {
           <PriceComponent
             yearlyPrice={item.expected_annually_bill_amount}
             monthlyPrice={item.expected_monthly_bill_amount}
+            billingOptions={item.billing_options}  
+          
           />
         </div>
       </div>

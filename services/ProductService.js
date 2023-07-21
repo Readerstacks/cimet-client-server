@@ -1,4 +1,5 @@
 import { config } from "./config";
+import { Util } from "./Util";
 const { ApiService } = require("./ApiService");
 const { AuthService } = require("./AuthService");
 
@@ -13,5 +14,25 @@ export class ProductService {
     });
     const json = await res.json();
     return json;
+  }
+
+  static addFilter(products) {
+    let filteredProducts = {};
+
+    for (let product of products) {
+      if (!filteredProducts[product.billing_options]) {
+        filteredProducts[product.billing_options] = product;
+      } else {
+        if (
+          filteredProducts[product.billing_options]
+            .expected_annually_bill_amount >
+          product.expected_annually_bill_amount
+        ) {
+          filteredProducts[product.billing_options] = product;
+        }
+      }
+    }
+    console.log(filteredProducts, "filteredProducts");
+    return Object.values(filteredProducts);
   }
 }

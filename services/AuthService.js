@@ -9,6 +9,7 @@ export class AuthService {
   //get auth token
   static async getToken() {
     let parseToken;
+  
     if (!AuthService.check(Cookies.get("token"))) {
       let response = await AuthService.authorizeToken();
       if (!response) {
