@@ -1,6 +1,6 @@
 export const config = {
   API_URL: "https://devcore02.cimet.io",
-  LOCAL_API_URL: "http://localhost:3000/api/",
+  LOCAL_API_URL: "https://zrsvjn-3000.csb.app/api/",
   VERSION: "v1",
   API_KEY: "4NKQ3-815C2-8T5Q2-16318-55301",
   DS: "/",
