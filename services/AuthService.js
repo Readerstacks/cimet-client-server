@@ -1,5 +1,3 @@
-import { ApiService } from "./ApiService";
-import { redirect } from "next/navigation";
 import Cookies from "js-cookie";
 const { config } = require("./config");
 
@@ -9,7 +7,7 @@ export class AuthService {
   //get auth token
   static async getToken() {
     let parseToken;
-  
+
     if (!AuthService.check(Cookies.get("token"))) {
       let response = await AuthService.authorizeToken();
       if (!response) {
@@ -20,7 +18,7 @@ export class AuthService {
       let tokenPayload = Cookies.get("token");
       parseToken = JSON.parse(tokenPayload);
     }
-    
+
     return parseToken.token;
   }
 

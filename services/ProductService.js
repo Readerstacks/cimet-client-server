@@ -1,6 +1,4 @@
 import { config } from "./config";
-import { Util } from "./Util";
-const { ApiService } = require("./ApiService");
 const { AuthService } = require("./AuthService");
 
 export class ProductService {
@@ -32,7 +30,7 @@ export class ProductService {
         }
       }
     }
-    
+
     return Object.values(filteredProducts);
   }
 }
