@@ -1,23 +1,36 @@
 import { config } from "./config";
-const { ApiService } = require("./ApiService");
 const { AuthService } = require("./AuthService");
 
 export class ProductService {
-  
   static PLAN_API = "products";
 
   static async getList() {
-    let token = await AuthService.getToken();
-    const res = await fetch(config.LOCAL_API_URL+ProductService.PLAN_API, {
+    const token = await AuthService.getToken();
+    const res = await fetch(config.LOCAL_API_URL + ProductService.PLAN_API, {
       method: "POST",
-      headers: { "token": token },
-      body: JSON.stringify({ session_id: config.SESSION_ID }),
+      headers: { token: token },
     });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch products");
-    }
-    return res.json();
+    const json = await res.json();
+    return json;
   }
- 
+
+  static addFilter(products) {
+    let filteredProducts = {};
+
+    for (let product of products) {
+      if (!filteredProducts[product.billing_options]) {
+        filteredProducts[product.billing_options] = product;
+      } else {
+        if (
+          filteredProducts[product.billing_options]
+            .expected_annually_bill_amount >
+          product.expected_annually_bill_amount
+        ) {
+          filteredProducts[product.billing_options] = product;
+        }
+      }
+    }
+
+    return Object.values(filteredProducts);
+  }
 }
