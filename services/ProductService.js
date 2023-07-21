@@ -32,7 +32,7 @@ export class ProductService {
         }
       }
     }
-    console.log(filteredProducts, "filteredProducts");
+    
     return Object.values(filteredProducts);
   }
 }
