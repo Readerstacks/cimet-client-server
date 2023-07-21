@@ -11,7 +11,7 @@ export default function Products() {
   async function getList() {
     try {
       setLoader(true);
-      console.log("ProductService.addFilter(products)");
+
       let products = await ProductService.getList();
       if (hasPlans(products)) {
         products.data.electricity = ProductService.addFilter(

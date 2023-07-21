@@ -30,7 +30,6 @@ export class ProductService {
         }
       }
     }
-
     return Object.values(filteredProducts);
   }
 }
